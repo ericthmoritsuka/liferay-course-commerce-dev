@@ -2,7 +2,7 @@
     "active": true,
     "defaultLanguageId": "en_US",
     "enableComments": false,
-    "enableLocalization": false,
+    "enableLocalization": true,
     "enableObjectEntryHistory": false,
     "label": {
         "en_US": "Ticket"
@@ -20,7 +20,7 @@
             },
             "name": "subject",
             "objectFieldSettings": [],
-            "required": false,
+            "required": true,
             "system": false,
             "type": "String"
         },
@@ -29,7 +29,7 @@
             "businessType": "LongText",
             "indexed": false,
             "indexedAsKeyword": false,
-            "indexedLanguageId": null,
+            "indexedLanguageId": "",
             "label": {
                 "en_US": "Description"
             },

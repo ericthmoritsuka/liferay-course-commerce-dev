@@ -3,7 +3,7 @@ import '../style.css';
 import Ticket from './Ticket';
 
 function TicketsList() {
-	const [tickets, setTickets] = useState([]);
+	const [tickets, setTickets] = useState(null);
 	const [activeTab, setActiveTab] = useState('all');
 	const [loading, setLoading] = useState(true);
 	const [error, setError] = useState(null);
@@ -20,7 +20,9 @@ function TicketsList() {
 	}, []);
 
 	const filteredTickets =
-		activeTab === 'all'
+		tickets === null
+			? null
+			: activeTab === 'all'
 			? tickets
 			: tickets.filter((t) => t.ticketStatus?.key === activeTab);
 
@@ -56,11 +58,11 @@ function TicketsList() {
 			</div>
 
 			<div className="tickets-list">
-				{filteredTickets.length === 0 ? (
+				{filteredTickets === null || filteredTickets.length === 0 ? (
 					<div className="no-tickets">
-						{tickets.length === 0
+						{filteredTickets === null
 							? 'No tickets loaded yet. Complete the TODO in TicketsList.js.'
-							: 'No tickets in this category.'}
+							: 'No tickets found.'}
 					</div>
 				) : (
 					filteredTickets.map((ticket) => (
